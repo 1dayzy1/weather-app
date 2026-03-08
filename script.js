@@ -13,17 +13,17 @@ const wind_speed = document.querySelector(".wind-speed");
 
 
 sendBtn.addEventListener("click", async() =>{
-    const req = await fetch(`http://api.weatherapi.com/v1/current.json?key=0cde1734a6ba432a8c3154143260803&q=${inputReg.value}`);
+    const req = await fetch(`https://api.weatherapi.com/v1/current.json?key=0cde1734a6ba432a8c3154143260803&q=${inputReg.value}`);
     const data = await req.json()
     console.log(data);
     
-    // ИЗМЕНЕНИЕ ЗДЕСЬ: добавляем класс "date", а не "data"
+    
     block.classList.add("date");
 
     const localtime = data.location.localtime.split(' ')[1];
     const temp_c = data.current.temp_c;
 
-    // img.src = data.current.condition.icon
+   
     locations.textContent = `Регион:${data.location.name}, ${data.location.country}`;
 
     time.textContent = `Местное время: ${localtime}`;
