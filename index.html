@@ -1,38 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Погода</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <p id="timer"></p>
     <div class="container">
+
         <div class="block">
+
             <div class="block-search">
-                <input type="text" class="input" placeholder="Введите город..." />
+                <input type="text" class="input" placeholder="Введите город..." value="yalta" />
                 <button class="send">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
                 </button>
             </div>
 
+
+
+
+
+            <div class="err" style="text-align: center;">
+
+                <div class="err-content">
+                    <div class="err-404">
+                        <h1>4<span>0</span>4</h1>
+                    </div>
+                    <h2>Опс! Города не существует 😢</h2>
+                    <p>Мы иска́ли везде, но такого города не нашли</p>
+                    <p class="err-hint">Проверь название и попробуй снова</p>
+                </div>
+
+            </div>
+
+
+            <div class="load">
+
+
+                <div class="loader"></div>
+                <h1>Идет загрузка данных </h1>
+
+            </div>
+
+
             <div class="info-block">
                 <!-- Город, регион, страна -->
                 <p class="location"></p>
-                
+
                 <!-- Местное время -->
                 <p class="local-time"></p>
-                
+
                 <!-- Температура -->
                 <div class="temp-container">
                     <p class="temp"></p>
                     <p class="feels-like"></p>
                 </div>
-                
+
                 <!-- Дополнительная информация (ветер) -->
                 <div class="weather-details">
                     <div class="detail-item">
@@ -41,7 +74,7 @@
                         <span class="wind-dir"></span>
                     </div>
                 </div>
-                
+
                 <!-- Дата (скрыта) -->
                 <p class="date"></p>
             </div>
@@ -50,4 +83,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

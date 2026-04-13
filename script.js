@@ -9,9 +9,14 @@ const feels_like = document.querySelector(".feels-like");
 const datee = document.querySelector(".date");
 const wind_speed = document.querySelector(".wind-speed");
 const timer = document.querySelector("#timer");
+const info_block = document.querySelector(".info-block");
+const err_block = document.querySelector(".err");
+const loader = document.querySelector(".loader");
+const load = document.querySelector(".load");
 
-const updateTimer = () =>{
-  const time  = new Date();
+
+const updateTimer = () => {
+  const time = new Date();
   // console.log(time.toString().split(' ')[4]);
   timer.textContent = time.toString().split(' ')[4];
 }
@@ -22,16 +27,36 @@ setInterval(updateTimer, 1000)
 
 try {
   sendBtn.addEventListener("click", async () => {
-   
 
-    if (!inputReg.value)return;
-    
+    block.style.height = "250px"
+    block.classList.remove("date");
+    block.classList.remove("error");
+
+    if (!inputReg.value) return;
+    loader.classList.add('active')
+    load.classList.add('active')
 
     const req = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=0cde1734a6ba432a8c3154143260803&q=${inputReg.value}`
     );
+
+
     const data = await req.json();
     console.log(data);
+
+
+    if (!req.ok) {
+      // alert("Ошибка получения данных");
+      block.classList.remove("date");
+      loader.classList.remove('active')
+      load.classList.remove('active')
+
+      block.classList.add("error");
+      return;
+    }
+    loader.classList.remove('active')
+    load.classList.remove('active')
+    block.classList.remove("error");
 
     block.classList.add("date");
 
@@ -52,8 +77,11 @@ try {
 
     datee.textContent = `Время: ${dates[4]}`;
 
-    // console.log(data.current.condition.icon)
+    console.log(data.current.condition.icon)
   });
 } catch (error) {
   console.log(error);
 }
+
+
+
