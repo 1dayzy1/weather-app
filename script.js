@@ -63,7 +63,10 @@ try {
     const localtime = data.location.localtime.split(" ")[1];
     const temp_c = data.current.temp_c;
 
-    locations.textContent = `Регион:${data.location.name}, ${data.location.country} , ${data.location.region}`;
+    let country_test = data.location.region === "Krym" ? "Россия" : data.location.country;
+    console.log(data.location.region);
+
+    locations.textContent = `Регион:${data.location.name}, ${country_test} , ${data.location.region}`;
 
     time.textContent = `Местное время: ${localtime}`;
     temp.textContent = `${temp_c}`;
